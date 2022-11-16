@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Guess from '../components/Guess';
 
 import initialData from '../data/capitals.json';
-interface QuizInterface {
-  country: { name: string; capital: string };
-}
 
 const Quiz = () => {
   // const [countries, setCountries] = useState(initialData);
   const [options, setOptions] = useState<any>([]);
   const [currentCountry, setCurrentCountry] = useState(initialData[0]);
+  const [correctText, setCorrectText] = useState(false);
+  const [incorrectText, setIncorrectText] = useState(false);
 
   useEffect(() => {
     const arr = [];
@@ -17,13 +16,16 @@ const Quiz = () => {
       arr.push(initialData[i]);
     }
     setOptions([...options, ...arr]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const checkAnswer = (capital: string) => {
     if (capital === currentCountry.capital) {
-      console.log('correct');
+      setCorrectText(true);
+      setTimeout(() => setCorrectText(false), 2000);
     } else {
-      console.log('incorrect');
+      setIncorrectText(true);
+      setTimeout(() => setIncorrectText(false), 2000);
     }
   };
 
@@ -39,6 +41,8 @@ const Quiz = () => {
           />
         )
       )}
+      {incorrectText && <p>Incorrect !</p>}
+      {correctText && <p>Correct !</p>}
     </div>
   );
 };
