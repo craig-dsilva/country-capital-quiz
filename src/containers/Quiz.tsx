@@ -16,7 +16,7 @@ const Quiz = () => {
     for (let i = 0; i < 4; i++) {
       arr.push(Countries[Math.round(Math.random() * Countries.length - 1)]);
     }
-    arr.push(currentCountry);
+    arr.splice(Math.round(Math.random() * 4), 0, currentCountry);
     setOptions([...options, ...arr]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentCountry]);
@@ -24,11 +24,13 @@ const Quiz = () => {
   const checkAnswer = (capital: string) => {
     if (capital === currentCountry.capital) {
       setCorrectText(true);
-      setTimeout(() => setCorrectText(false), 2000);
-      setCurrentCountry(
-        Countries[Math.round(Math.random() * Countries.length - 1)]
-      );
-      setOptions([]);
+      setTimeout(() => {
+        setCorrectText(false);
+        setCurrentCountry(
+          Countries[Math.round(Math.random() * Countries.length - 1)]
+        );
+        setOptions([]);
+      }, 2000);
     } else {
       setIncorrectText(true);
       setTimeout(() => setIncorrectText(false), 2000);
