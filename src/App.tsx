@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Result from './components/Result';
 
 import Quiz from './containers/Quiz';
 
@@ -48,7 +49,7 @@ const App = () => {
           handleCorrectCount={setCorrectCount}
         />
       ) : (
-        <p>Your Score:</p>
+        <Result score={correctCount} />
       )}
     </div>
   );
