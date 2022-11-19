@@ -25,6 +25,7 @@ const Quiz: React.FC<QuizInterface> = ({
 }) => {
   const [correctText, setCorrectText] = useState(false);
   const [incorrectText, setIncorrectText] = useState(false);
+  const [questionNumber, setQuestionNumber] = useState(1);
 
   const checkAnswer = (capital: string) => {
     if (capital === currentCountry.capital) {
@@ -36,6 +37,7 @@ const Quiz: React.FC<QuizInterface> = ({
     setTimeout(() => {
       setCorrectText(false);
       setIncorrectText(false);
+      setQuestionNumber((count) => count + 1);
       handleCountry();
       handleOptions([]);
     }, 2000);
@@ -44,6 +46,7 @@ const Quiz: React.FC<QuizInterface> = ({
   return (
     <div className="quiz">
       <h2>Guess the capital of {currentCountry.name} ?</h2>
+      <p>Question {questionNumber} / 10</p>
       {options.map(
         (option: { name: string; capital: string }, index: number) => (
           <Guess

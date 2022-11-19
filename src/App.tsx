@@ -16,18 +16,19 @@ const App = () => {
 
   useEffect(() => {
     const arr = [];
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 10; i++) {
       arr.push(Math.round(Math.random() * Countries.length - 1));
     }
     setCountryIds([...countryIds, ...arr]);
   }, []);
+
   const newCountry = () => {
-    console.log(countryIds[0]);
     setCurrentCountry(Countries[countryIds[0]]);
     const copyOfCountryIds = [...countryIds];
     copyOfCountryIds.shift();
     setCountryIds(copyOfCountryIds);
   };
+
   useEffect(() => {
     const arr = [];
     for (let i = 0; i < 4; i++) {
