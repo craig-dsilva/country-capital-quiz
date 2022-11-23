@@ -26,17 +26,21 @@ const Quiz: React.FC<QuizInterface> = ({
   const [correctText, setCorrectText] = useState(false);
   const [incorrectText, setIncorrectText] = useState(false);
   const [questionNumber, setQuestionNumber] = useState(1);
+  const [disableGuess, setDisableGuess] = useState(false);
 
   const checkAnswer = (capital: string) => {
     if (capital === currentCountry.capital) {
       setCorrectText(true);
       handleCorrectCount((count) => count + 1);
+      setDisableGuess(true);
     } else {
       setIncorrectText(true);
+      setDisableGuess(true);
     }
     setTimeout(() => {
       setCorrectText(false);
       setIncorrectText(false);
+      setDisableGuess(false);
       setQuestionNumber((count) => count + 1);
       handleCountry();
       handleOptions([]);
@@ -53,6 +57,7 @@ const Quiz: React.FC<QuizInterface> = ({
             key={index}
             capital={option.capital}
             handleAnswer={checkAnswer}
+            disableGuess={disableGuess}
           />
         )
       )}
