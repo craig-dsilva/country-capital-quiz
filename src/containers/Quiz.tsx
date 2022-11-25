@@ -62,6 +62,7 @@ const Quiz: React.FC<QuizInterface> = ({
         )
       )}
       {incorrectText ? <p>Incorrect!</p> : correctText && <p>Correct!</p>}
+      {incorrectText && <p>Correct Answer: {currentCountry.capital}</p>}
       <p>Your Score: {score}</p>
     </div>
   );
