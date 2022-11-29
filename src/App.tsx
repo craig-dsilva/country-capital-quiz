@@ -9,7 +9,7 @@ import Countries from './data/capitals.json';
 const App = () => {
   const [options, setOptions] = useState<any>([]);
   const [currentCountry, setCurrentCountry] = useState<any>(
-    Countries[Math.round(Math.random() * Countries.length - 1)]
+    Countries[Math.floor(Math.random() * Countries.length)]
   );
   const [countryIds, setCountryIds] = useState<number[]>([]);
   const [correctCount, setCorrectCount] = useState(0);
@@ -17,7 +17,7 @@ const App = () => {
   useEffect(() => {
     const arr = [];
     for (let i = 0; i < 10; i++) {
-      arr.push(Math.round(Math.random() * Countries.length - 1));
+      arr.push(Math.floor(Math.random() * Countries.length));
     }
     setCountryIds([...countryIds, ...arr]);
   }, []);
@@ -32,9 +32,9 @@ const App = () => {
   useEffect(() => {
     const arr = [];
     for (let i = 0; i < 4; i++) {
-      arr.push(Countries[Math.round(Math.random() * Countries.length - 1)]);
+      arr.push(Countries[Math.floor(Math.random() * Countries.length)]);
     }
-    arr.splice(Math.round(Math.random() * 4), 0, currentCountry);
+    arr.splice(Math.floor(Math.random() * 4), 0, currentCountry);
     setOptions([...options, ...arr]);
   }, [currentCountry]);
 
