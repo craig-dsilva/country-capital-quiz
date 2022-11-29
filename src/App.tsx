@@ -31,7 +31,7 @@ const App = () => {
 
   useEffect(() => {
     const arr = [];
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 5; i++) {
       arr.push(Countries[Math.floor(Math.random() * Countries.length)]);
     }
     arr.splice(Math.floor(Math.random() * 4), 0, currentCountry);

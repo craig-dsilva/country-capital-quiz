@@ -51,19 +51,41 @@ const Quiz: React.FC<QuizInterface> = ({
     <div className="quiz">
       <h2>Guess the capital of {currentCountry.name} ?</h2>
       <p>Question {questionNumber} / 10</p>
-      {options.map(
-        (option: { name: string; capital: string }, index: number) => (
-          <Guess
-            key={index}
-            capital={option.capital}
-            handleAnswer={checkAnswer}
-            disableGuess={disableGuess}
-          />
-        )
-      )}
-      {incorrectText ? <p>Incorrect!</p> : correctText && <p>Correct!</p>}
-      {incorrectText && <p>Correct Answer: {currentCountry.capital}</p>}
-      <p>Your Score: {score}</p>
+      <div className="options">
+        {options.map(
+          (option: { name: string; capital: string }, index: number) => (
+            <Guess
+              key={index}
+              capital={option.capital}
+              handleAnswer={checkAnswer}
+              disableGuess={disableGuess}
+            />
+          )
+        )}
+      </div>
+      <p
+        style={{
+          color: '#0f0',
+          visibility: !correctText ? 'hidden' : 'visible',
+        }}
+      >
+        Correct!
+      </p>
+      <p
+        style={{
+          color: '#f00',
+          visibility: !incorrectText ? 'hidden' : 'visible',
+        }}
+      >
+        Incorrect!
+      </p>
+      <p style={{ visibility: !incorrectText ? 'hidden' : 'visible' }}>
+        Correct Answer: {currentCountry.capital}
+      </p>
+      <p>
+        Your Score:{' '}
+        <span style={{ color: score >= 7 ? '#0f0' : '#f00' }}>{score}</span>
+      </p>
     </div>
   );
 };
