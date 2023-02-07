@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
-import Result from './components/Result';
 
 import Quiz from './containers/Quiz';
+import Result from './components/Result';
 
 import Countries from './data/capitals.json';
 
@@ -34,8 +34,12 @@ const App = () => {
     for (let i = 0; i < 5; i++) {
       arr.push(Countries[Math.floor(Math.random() * Countries.length)]);
     }
-    arr.splice(Math.floor(Math.random() * 4), 0, currentCountry);
-    setOptions([...options, ...arr]);
+    const duplicatesRemoved = arr.filter(country => country.capital !== currentCountry.capital)
+    if (duplicatesRemoved.length < 5) {
+      duplicatesRemoved.push(Countries[Math.floor(Math.random() * Countries.length)])
+    }
+    duplicatesRemoved.splice(Math.floor(Math.random() * 4), 0, currentCountry);
+    setOptions([...options, ...duplicatesRemoved]);
   }, [currentCountry]);
 
   return (
