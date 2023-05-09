@@ -12,7 +12,7 @@ const Guess: React.FC<GuessInterface> = ({
   disableGuess,
 }) => {
   return (
-    <button disabled={disableGuess} onClick={() => handleAnswer(capital)}>
+    <button className='option' disabled={disableGuess} onClick={() => handleAnswer(capital)}>
       {capital}
     </button>
   );
