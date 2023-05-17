@@ -16,8 +16,19 @@ code {
 .options {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1em;
+  grid-gap: 2em;
   margin: 0 5em;
+}
+
+.option {
+  appearance: button;
+  width: 25vw;
+  margin: 0 5em;
+  border: none;
+  border-radius: 2.5%;
+  background-color: rgb(55, 47, 171);
+  color: #fff;
+  padding: 2em;
 }
 
 .correct-answer {
