@@ -5,7 +5,7 @@ const Result: React.FC<{ score: number }> = ({ score }) => {
     <div>
       <p>Game Over!</p>
       <p>Your Score: {score}</p>
-      {score >= 7 ? <p>You Win!</p> : <p>You Lose!</p>}
+      <p data-testid="outcome">{score >= 7 ? 'You Win!' : 'You Lose!'}</p>
     </div>
   );
 };
