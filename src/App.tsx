@@ -6,9 +6,14 @@ import Result from './components/Result';
 
 import Countries from './data/capitals.json';
 
+export interface OptionsInterface {
+  name: string;
+  capital: string;
+}
+
 const App = () => {
-  const [options, setOptions] = useState<any>([]);
-  const [currentCountry, setCurrentCountry] = useState<any>(
+  const [options, setOptions] = useState<OptionsInterface[]>([]);
+  const [currentCountry, setCurrentCountry] = useState<OptionsInterface>(
     Countries[Math.floor(Math.random() * Countries.length)]
   );
   const [countryIds, setCountryIds] = useState<number[]>([]);

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import Guess from '../components/Guess';
+import { OptionsInterface } from '../App';
 
 interface CountryInterface {
   name: string;
@@ -8,7 +9,7 @@ interface CountryInterface {
 }
 interface QuizInterface {
   options: CountryInterface[];
-  handleOptions: React.Dispatch<React.SetStateAction<never[]>>;
+  handleOptions: React.Dispatch<React.SetStateAction<OptionsInterface[]>>;
   currentCountry: CountryInterface;
   handleCountry: React.Dispatch<React.SetStateAction<void>>;
   score: number;
