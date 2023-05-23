@@ -65,7 +65,7 @@ const Quiz: React.FC<QuizInterface> = ({
       </div>
       <p
         style={{
-          color: '#0f0',
+          color: '#2cbf2c',
           visibility: !correctText ? 'hidden' : 'visible',
         }}
       >
