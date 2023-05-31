@@ -19,12 +19,17 @@ const App = () => {
   const [countryIds, setCountryIds] = useState<number[]>([]);
   const [correctCount, setCorrectCount] = useState(0);
 
-  useEffect(() => {
+  const setupCountries = () => {
     const arr = [];
     for (let i = 0; i < 10; i++) {
       arr.push(Math.floor(Math.random() * Countries.length));
     }
     setCountryIds([...countryIds, ...arr]);
+    setCorrectCount(0)
+  };
+
+  useEffect(() => {
+    setupCountries();
   }, []);
 
   const newCountry = () => {
@@ -39,9 +44,13 @@ const App = () => {
     for (let i = 0; i < 5; i++) {
       arr.push(Countries[Math.floor(Math.random() * Countries.length)]);
     }
-    const duplicatesRemoved = arr.filter(country => country.capital !== currentCountry.capital)
+    const duplicatesRemoved = arr.filter(
+      (country) => country.capital !== currentCountry.capital
+    );
     if (duplicatesRemoved.length < 5) {
-      duplicatesRemoved.push(Countries[Math.floor(Math.random() * Countries.length)])
+      duplicatesRemoved.push(
+        Countries[Math.floor(Math.random() * Countries.length)]
+      );
     }
     duplicatesRemoved.splice(Math.floor(Math.random() * 4), 0, currentCountry);
     setOptions([...options, ...duplicatesRemoved]);
@@ -60,7 +69,7 @@ const App = () => {
           handleCorrectCount={setCorrectCount}
         />
       ) : (
-        <Result score={correctCount} />
+        <Result score={correctCount} restart={setupCountries} />
       )}
     </div>
   );
