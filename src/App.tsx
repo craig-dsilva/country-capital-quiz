@@ -25,7 +25,7 @@ const App = () => {
       arr.push(Math.floor(Math.random() * Countries.length));
     }
     setCountryIds([...countryIds, ...arr]);
-    setCorrectCount(0)
+    setCorrectCount(0);
   };
 
   useEffect(() => {
@@ -71,6 +71,13 @@ const App = () => {
       ) : (
         <Result score={correctCount} restart={setupCountries} />
       )}
+      <a
+        href="https://github.com/craig-dsilva/country-capital-quiz"
+        target="_blank"
+        rel="noreferrer"
+      >
+        GitHub
+      </a>
     </div>
   );
 };
