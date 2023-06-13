@@ -71,13 +71,13 @@ const App = () => {
       ) : (
         <Result score={correctCount} restart={setupCountries} />
       )}
-      <a
+      {/* <a
         href="https://github.com/craig-dsilva/country-capital-quiz"
         target="_blank"
         rel="noreferrer"
       >
         GitHub
-      </a>
+      </a> */}
     </div>
   );
 };
